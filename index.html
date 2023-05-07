@@ -9,8 +9,24 @@
 <body>
     
 <script>
+    // Function to get random number from 0-2 for computers choice
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
-    
+    // Define an array of chocies: (Rock, Paper or Scissors)
+    let choices = ["Rock","Paper","Scissors"]
+
+    // Define a function that determines the computers choice
+    function computersChoice() {
+        return choices[getRandomInt(3)]
+    }
+
+    // Define a function that determines the users choice
+
+
+    //Define a function that takes users and computers choice as arguments
+    // to determine who won the game, replay if necessary
 
 </script>
 
