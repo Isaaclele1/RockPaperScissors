@@ -14,19 +14,39 @@
         return Math.floor(Math.random() * max);
     }
 
-    // Define an array of chocies: (Rock, Paper or Scissors)
-    let choices = ["Rock","Paper","Scissors"]
+    // Define an array of choices: (Rock, Paper or Scissors)
+    let choices = ["rock","paper","scissors"]
 
     // Define a function that determines the computers choice
     function computersChoice() {
-        return choices[getRandomInt(3)]
+        let cChoice = choices[getRandomInt(3)] //calls on rng with a range of 3 to index the array to generate a "random" option
+        return cChoice;
     }
 
     // Define a function that determines the users choice
+    function playersChoice() {
+        let pChoice = prompt("Choose your Weapon: Rock, Paper or Scissors!").toLowerCase();
+        if (pChoice === "rock" || pChoice === "paper" || pChoice === "scissors") { // If the users choice is not rock paper or scissors prompt them again
+            return pChoice;
+        } else {
+            alert("Invalid choice, try again!")
+            playersChoice();
+        }
+    }
+
+    Test(computersChoice(),playersChoice());
+
+    function Test(cChoice, pChoice) {
+
+        console.log(cChoice); //computers choice
+        console.log(pChoice); //players choice
+
+    }
 
 
     //Define a function that takes users and computers choice as arguments
     // to determine who won the game, replay if necessary
+
 
 </script>
 
