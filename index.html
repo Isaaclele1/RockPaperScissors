@@ -34,13 +34,25 @@
         }
     }
 
-    Test(computersChoice(),playersChoice());
+    oneMatch(computersChoice(),playersChoice());
 
-    function Test(cChoice, pChoice) {
+    function oneMatch(cChoice, pChoice) {
 
-        console.log(cChoice); //computers choice
-        console.log(pChoice); //players choice
-
+        if (cChoice === pChoice) {
+            console.log("It's a tie! You each chose " + pChoice + ".");
+        } else if (cChoice === "rock" && pChoice === "scissors") {
+            console.log("Computer wins! Rock beats scissors.")
+        } else if (cChoice === "rock" && pChoice === "paper") {
+            console.log("Player wins! Paper beats rock.") 
+        } else if (cChoice === "paper" && pChoice === "scissors") {
+            console.log("Player wins! Scissors beats paper.") 
+        } else if (cChoice === "paper" && pChoice === "rock") {
+            console.log("Computer wins! Paper beats rock.") 
+        } else if (cChoice === "scissors" && pChoice === "rock") {
+            console.log("Player wins! Rock beats scissors.") 
+        } else if (cChoice === "scissors" && pChoice === "paper") {
+            console.log("Computer wins! Scissors beat paper.") 
+        } 
     }
 
 
