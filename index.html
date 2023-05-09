@@ -19,46 +19,58 @@
 
     // Define a function that determines the computers choice
     function computersChoice() {
-        let cChoice = choices[getRandomInt(3)] //calls on rng with a range of 3 to index the array to generate a "random" option
-        return cChoice;
+        let cChoice = choices[getRandomInt(3)] //calls on getRandomInt() with an argument of 3 to index the array to generate a "random" option
+        return cChoice; //return the computers choice
     }
 
     // Define a function that determines the users choice
     function playersChoice() {
-        let pChoice = prompt("Choose your Weapon: Rock, Paper or Scissors!").toLowerCase();
+        let pChoice = prompt("Choose your Weapon: Rock, Paper or Scissors!");
+        pChoice = pChoice.toLowerCase(); //defaults the players choice to lowercase so it can be typed in any case
         if (pChoice === "rock" || pChoice === "paper" || pChoice === "scissors") { // If the users choice is not rock paper or scissors prompt them again
             return pChoice;
         } else {
-            alert("Invalid choice, try again!")
+            alert("Invalid choice, try again!") //If the player enters something that is not rock, paper, or scissors prompts them to enter another choice
             playersChoice();
         }
     }
 
-    oneMatch(computersChoice(),playersChoice());
+    let tallyForComputer = 0; //initialize computer score
+    let tallyForPlayer = 0; //initialize player score
 
-    function oneMatch(cChoice, pChoice) {
+    do {
+        oneMatch(computersChoice(),playersChoice()); //triggers a best of 5 game to occur until one of the players wins 3 games
+    } while (!(tallyForComputer === 3 || tallyForPlayer === 3));
 
-        if (cChoice === pChoice) {
+    if (tallyForComputer === 3) { //Executes after game has completed, announces the winner
+        console.log("The Computer has won!");
+    } else {
+        console.log("The Player has won!");
+    }
+
+    function oneMatch(cChoice, pChoice) { // An if statewment that iterates through each possible rock paper scissors outcome to determin winner of game
+        if (cChoice === pChoice) { // If each option is the same it is a tie
             console.log("It's a tie! You each chose " + pChoice + ".");
         } else if (cChoice === "rock" && pChoice === "scissors") {
             console.log("Computer wins! Rock beats scissors.")
+            tallyForComputer += 1; // Adds 1 to the existing score for computer
         } else if (cChoice === "rock" && pChoice === "paper") {
-            console.log("Player wins! Paper beats rock.") 
+            console.log("Player wins! Paper beats rock.");
+            tallyForPlayer += 1; // Adds 1 to the existing score for player
         } else if (cChoice === "paper" && pChoice === "scissors") {
-            console.log("Player wins! Scissors beats paper.") 
+            console.log("Player wins! Scissors beats paper.");
+            tallyForPlayer += 1;
         } else if (cChoice === "paper" && pChoice === "rock") {
-            console.log("Computer wins! Paper beats rock.") 
+            console.log("Computer wins! Paper beats rock.");
+            tallyForComputer += 1;
         } else if (cChoice === "scissors" && pChoice === "rock") {
-            console.log("Player wins! Rock beats scissors.") 
+            console.log("Player wins! Rock beats scissors.");
+            tallyForPlayer += 1;
         } else if (cChoice === "scissors" && pChoice === "paper") {
-            console.log("Computer wins! Scissors beat paper.") 
+            console.log("Computer wins! Scissors beat paper.");
+            tallyForComputer += 1;
         } 
     }
-
-
-    //Define a function that takes users and computers choice as arguments
-    // to determine who won the game, replay if necessary
-
 
 </script>
 
